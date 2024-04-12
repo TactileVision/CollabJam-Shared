@@ -1,31 +1,30 @@
-
 export enum InteractionMode {
-    Jamming = 1,
-    Recording,
-    Playback
+  Jamming = 1,
+  Recording,
+  Playback,
 }
 
 export enum InteractionModeChange {
-    toggleRecording = 1,
-    togglePlayback,
+  toggleRecording = 1,
+  togglePlayback,
 }
 
 export interface User {
-    id: string,
-    name: string,
-    color: string
+  id: string;
+  name: string;
+  color: string;
 }
 
 export interface RoomMetaData {
-    id: string,
-    name: string,
-    description: string,
-    recordingNamePrefix: string,
-    participants: User[]
+  id: string;
+  name: string;
+  description: string;
+  recordingNamePrefix: string;
+  participants: User[];
 }
 
 export interface Room extends RoomMetaData {
-    mode: InteractionMode,
-    maxDurationRecord: number,
-    currentRecordingTime: number
+  mode: InteractionMode;
+  maxDurationRecord: number;
+  currentRecordingTime: number;
 }
