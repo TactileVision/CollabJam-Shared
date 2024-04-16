@@ -1,15 +1,18 @@
 export interface MidiOutputInfo {
-	id: string
-	name: string
-	channels: number
+  id: string;
+  name: string;
+  channels: number;
 }
 
 export interface MidiInputInfo {
-	id: string
-	name: string
-	channels: number
+  id: string;
+  name: string;
+  channels: number;
 }
 
 export interface NoteOn {
-	deviceId: string, channels: number | number[], frequency: number, amplitude: number
+  deviceId: string;
+  channels: number | number[];
+  frequency: number;
+  amplitude: number;
 }

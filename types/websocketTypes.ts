@@ -1,4 +1,4 @@
-import { InteractionMode, InteractionModeChange } from "./roomTypes";
+import { InteractionMode } from "./roomTypes";
 import { TactonMetadata } from "./tactonTypes";
 
 export enum WS_MSG_TYPE {
