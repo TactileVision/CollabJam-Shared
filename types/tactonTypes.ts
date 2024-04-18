@@ -15,7 +15,7 @@ export interface Tacton {
 }
 export interface InstructionSetParameter {
   setParameter: {
-    channelIds: number[];
+    channels: number[];
     intensity: number;
   };
 }
@@ -30,7 +30,7 @@ export interface InstructionWait {
 }
 export interface InstructionSetParameter {
   setParameter: {
-    channelIds: number[];
+    channels: number[];
     intensity: number;
   };
 }
@@ -67,29 +67,30 @@ export function isWellFormed(tacton: Tacton): boolean {
 }
 
 export interface InstructionToClient {
-  channelIds: number[];
+  channels: number[];
   intensity: number;
   author: User | undefined;
+  keyId: string | undefined;
 }
 
 export interface TactileTask {
-  channelIds: number[];
+  channels: number[];
   intensity: number;
 }
 
 //Per Display actions
 export interface SetAmplitudeTask {
-  channelIds: number[];
+  channels: number[];
   intensity: number;
 }
 
 export interface SetFrequencyTask {
-  channelIds: number[];
+  channels: number[];
   frequency: number;
 }
 
 // export interface SetDisplayParameterTask {
-// 	channelIds: number[],
+// 	channels: number[],
 // 	value: number,
 // 	type: 'frequency' | 'amplitude'
 // }
