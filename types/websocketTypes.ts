@@ -57,7 +57,8 @@ export interface ServerToClientEvents {
   ENTER_ROOM_CLI: (res: ResponseEnteredRoom) => void
   SEND_INSTRUCTION_CLI: (res: InstructionToClient[]) => void
   UPDATE_USER_ACCOUNT_CLI: (res: User[]) => void
-  UPDATE_ROOM_MODE_CLI: (req: UpdateRoomMode) => void
+  UPDATE_ROOM_MODE_CLI: (req: UpdateRoomMode) => void,
+  GET_TACTON_CLI: (res: Tacton) => void,
 }
 export interface ChangeTactonMetadata {
   roomId: string;

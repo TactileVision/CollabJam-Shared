@@ -4,6 +4,9 @@ export interface TactonMetadata {
   name: string;
   favorite: boolean;
   recordDate: Date;
+  description: string;
+  customTags: string[];
+  bodyTags: string[];
 }
 export interface Tacton {
   uuid: string;
