@@ -10,9 +10,6 @@ export interface TactonMetadata {
 }
 export interface Tacton {
   uuid: string;
-  // name: string
-  // favorite: boolean
-  // recordDate: Date
   metadata: TactonMetadata;
   instructions: TactonInstruction[];
 }
