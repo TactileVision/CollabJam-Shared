@@ -1,4 +1,3 @@
-import exp = require("constants");
 import { InteractionMode, Room, User } from "./roomTypes";
 import { InstructionToClient, Tacton, TactonMetadata } from "./tactonTypes";
 
