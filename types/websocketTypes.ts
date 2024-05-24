@@ -207,7 +207,7 @@ export interface MsgRequestUpdateUser {
 
 export interface MsgResponseUpdatedUser {
   type: WS_MSG_TYPE.UPDATE_USER_ACCOUNT_CLI;
-  payload: { participants: User[] };
+  payload: User[];
 }
 
 export interface MsgRequestLogOutUser {

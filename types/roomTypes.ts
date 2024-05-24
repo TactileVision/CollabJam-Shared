@@ -2,17 +2,21 @@ export enum InteractionMode {
   Jamming = 1,
   Recording,
   Playback,
+  Overdubbing,
+  Editing,
 }
 
 export enum InteractionModeChange {
   toggleRecording = 1,
   togglePlayback,
+  toggleOverdubbing,
 }
 
 export interface User {
   id: string;
   name: string;
   color: string;
+  muted: boolean;
 }
 
 export interface RoomMetaData {
