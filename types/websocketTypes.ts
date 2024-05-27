@@ -54,7 +54,7 @@ export interface ClientToServerEvents {
   UPDATE_ROOM_MODE_SERV: (req: UpdateRoomMode) => void;
   LOG_OUT: (req: RequestUpdateUser) => void;
   DELETE_TACTON_SERV: (req: string) => void;
-  DUPLICATE_TACTON_SERV: (req: string) => void;
+  DUPLICATE_TACTON_SERV: (req: TactonIdentifier) => void;
 }
 
 export interface ServerToClientEvents {
@@ -69,12 +69,21 @@ export interface ServerToClientEvents {
     prefix: string;
   }) => void;
   ROOM_INFO_CLI: (r: Room) => void;
-  DELETE_TACTON_CLI: (res: boolean) => void;
+  DELETE_TACTON_CLI: (res: TactonDeletion) => void;
 }
 export interface ChangeTactonMetadata {
   roomId: string;
   tactonId: string;
   metadata: TactonMetadata;
+}
+
+export interface TactonDeletion {
+  delted: boolean,
+  tacton: TactonIdentifier
+}
+export interface TactonIdentifier {
+  roomId: string,
+  tactonId: string
 }
 
 export interface UpdateTacton {
