@@ -44,7 +44,7 @@ export enum WS_MSG_TYPE {
   DELETE_TACTON_SERV = "DELETE_TACTON_SERV",
   DELETE_TACTON_CLI = "DELETE_TACTON_CLI",
   DUPLICATE_TACTON_SERV = "DUPLICATE_TACTON_SERV",
-  DUPLICATE_TACTON_CLI = "DUPLICATE_TACTON_CLI",
+  DUPLICATE_TACTON_CLI = "DUPLICATE_TACTON_CLI", // the same as GET_TACTON_CLI
 }
 
 export interface ClientToServerEvents {
@@ -53,6 +53,8 @@ export interface ClientToServerEvents {
   SEND_INSTRUCTION_SERV: (req: RequestSendTactileInstruction) => void;
   UPDATE_ROOM_MODE_SERV: (req: UpdateRoomMode) => void;
   LOG_OUT: (req: RequestUpdateUser) => void;
+  DELETE_TACTON_SERV: (req: string) => void;
+  DUPLICATE_TACTON_SERV: (req: string) => void;
 }
 
 export interface ServerToClientEvents {
@@ -67,6 +69,7 @@ export interface ServerToClientEvents {
     prefix: string;
   }) => void;
   ROOM_INFO_CLI: (r: Room) => void;
+  DELETE_TACTON_CLI: (res: boolean) => void;
 }
 export interface ChangeTactonMetadata {
   roomId: string;
