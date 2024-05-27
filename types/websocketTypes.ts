@@ -55,6 +55,9 @@ export interface ClientToServerEvents {
   LOG_OUT: (req: RequestUpdateUser) => void;
   DELETE_TACTON_SERV: (req: string) => void;
   DUPLICATE_TACTON_SERV: (req: TactonIdentifier) => void;
+  CHANGE_TACTON_METADATA_SERV: (req: ChangeTactonMetadata) => void;
+  UPDATE_TACTON_SERV: (req: UpdateTacton) => void;
+
 }
 
 export interface ServerToClientEvents {
@@ -70,6 +73,8 @@ export interface ServerToClientEvents {
   }) => void;
   ROOM_INFO_CLI: (r: Room) => void;
   DELETE_TACTON_CLI: (res: TactonDeletion) => void;
+  CHANGE_TACTON_METADATA_CLI: (reset: ChangeTactonMetadata) => void;
+  UPDATE_TACTON_CLI: (res: UpdateTacton) => void;
 }
 export interface ChangeTactonMetadata {
   roomId: string;
@@ -174,8 +179,8 @@ export interface MsgListOfAvailableRooms {
 }
 export interface MsgChangeTactonMetadata {
   type:
-    | WS_MSG_TYPE.CHANGE_TACTON_METADATA_CLI
-    | WS_MSG_TYPE.CHANGE_TACTON_METADATA_SERV;
+  | WS_MSG_TYPE.CHANGE_TACTON_METADATA_CLI
+  | WS_MSG_TYPE.CHANGE_TACTON_METADATA_SERV;
   payload: ChangeTactonMetadata;
 }
 
@@ -269,16 +274,16 @@ export interface MsgResponseReceivedRecordedTacton {
 export interface MsgRequestUpdateRoom {
   type: WS_MSG_TYPE.UPDATE_ROOM_SERV;
   payload:
-    | {
-        room: {
-          id: string;
-          name: string;
-          description: string;
-        };
-        user: {
-          id: string;
-          name: string;
-        };
-      }
-    | RequestUpdateRoom;
+  | {
+    room: {
+      id: string;
+      name: string;
+      description: string;
+    };
+    user: {
+      id: string;
+      name: string;
+    };
+  }
+  | RequestUpdateRoom;
 }
