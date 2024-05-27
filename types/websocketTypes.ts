@@ -41,25 +41,32 @@ export enum WS_MSG_TYPE {
   STOP_TACTON_CLI = "STOP_TACT_CLI",
   SELECT_TACTON_SERV = "SELECT_TACT_SERV",
   SELECT_TACTON_CLI = "SELECT_TACT_CLI",
+  DELETE_TACTON_SERV = "DELETE_TACTON_SERV",
+  DELETE_TACTON_CLI = "DELETE_TACTON_CLI",
+  DUPLICATE_TACTON_SERV = "DUPLICATE_TACTON_SERV",
+  DUPLICATE_TACTON_CLI = "DUPLICATE_TACTON_CLI",
 }
 
 export interface ClientToServerEvents {
-  GET_AVAILABLE_ROOMS_SERV: () => void,
-  ENTER_ROOM_SERV: (req: RequestEnterRoom) => void
-  SEND_INSTRUCTION_SERV: (req: RequestSendTactileInstruction) => void
-  UPDATE_ROOM_MODE_SERV: (req: UpdateRoomMode) => void
-  LOG_OUT: (req: RequestUpdateUser) => void
+  GET_AVAILABLE_ROOMS_SERV: () => void;
+  ENTER_ROOM_SERV: (req: RequestEnterRoom) => void;
+  SEND_INSTRUCTION_SERV: (req: RequestSendTactileInstruction) => void;
+  UPDATE_ROOM_MODE_SERV: (req: UpdateRoomMode) => void;
+  LOG_OUT: (req: RequestUpdateUser) => void;
 }
 
 export interface ServerToClientEvents {
-  GET_AVAILABLE_ROOMS_CLI: (room: Room[]) => void
-  ENTER_ROOM_CLI: (res: ResponseEnteredRoom) => void
-  SEND_INSTRUCTION_CLI: (res: InstructionToClient[]) => void
-  UPDATE_USER_ACCOUNT_CLI: (res: User[]) => void
-  UPDATE_ROOM_MODE_CLI: (req: UpdateRoomMode) => void,
-  GET_TACTON_CLI: (res: Tacton) => void,
-  CHANGE_ROOMINFO_TACTON_PREFIX_SERV: (req: { roomId: string; prefix: string; }) => void
-  ROOM_INFO_CLI: (r: Room) => void
+  GET_AVAILABLE_ROOMS_CLI: (room: Room[]) => void;
+  ENTER_ROOM_CLI: (res: ResponseEnteredRoom) => void;
+  SEND_INSTRUCTION_CLI: (res: InstructionToClient[]) => void;
+  UPDATE_USER_ACCOUNT_CLI: (res: User[]) => void;
+  UPDATE_ROOM_MODE_CLI: (req: UpdateRoomMode) => void;
+  GET_TACTON_CLI: (res: Tacton) => void;
+  CHANGE_ROOMINFO_TACTON_PREFIX_SERV: (req: {
+    roomId: string;
+    prefix: string;
+  }) => void;
+  ROOM_INFO_CLI: (r: Room) => void;
 }
 export interface ChangeTactonMetadata {
   roomId: string;
@@ -155,8 +162,8 @@ export interface MsgListOfAvailableRooms {
 }
 export interface MsgChangeTactonMetadata {
   type:
-  | WS_MSG_TYPE.CHANGE_TACTON_METADATA_CLI
-  | WS_MSG_TYPE.CHANGE_TACTON_METADATA_SERV;
+    | WS_MSG_TYPE.CHANGE_TACTON_METADATA_CLI
+    | WS_MSG_TYPE.CHANGE_TACTON_METADATA_SERV;
   payload: ChangeTactonMetadata;
 }
 
@@ -250,16 +257,16 @@ export interface MsgResponseReceivedRecordedTacton {
 export interface MsgRequestUpdateRoom {
   type: WS_MSG_TYPE.UPDATE_ROOM_SERV;
   payload:
-  | {
-    room: {
-      id: string;
-      name: string;
-      description: string;
-    };
-    user: {
-      id: string;
-      name: string;
-    };
-  }
-  | RequestUpdateRoom;
+    | {
+        room: {
+          id: string;
+          name: string;
+          description: string;
+        };
+        user: {
+          id: string;
+          name: string;
+        };
+      }
+    | RequestUpdateRoom;
 }
