@@ -2,6 +2,7 @@ import { User } from "./roomTypes";
 
 export interface TactonMetadata {
   name: string;
+  iteration: number;
   favorite: boolean;
   recordDate: Date;
   description: string;
