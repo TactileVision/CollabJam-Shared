@@ -45,7 +45,8 @@ export enum WS_MSG_TYPE {
   DELETE_TACTON_CLI = "DELETE_TACTON_CLI",
   DUPLICATE_TACTON_SERV = "DUPLICATE_TACTON_SERV",
   DUPLICATE_TACTON_CLI = "DUPLICATE_TACTON_CLI", // the same as GET_TACTON_CLI
-  MOVE_TACTON_SERV = "MOVE_TACTON_SERV" // 
+  MOVE_TACTON_SERV = "MOVE_TACTON_SERV", // 
+  UPDATE_AVAILABLE_TAGS_CLI = "UPDATE_AVAILABLE_TAGS_CLI" // 
 }
 
 export interface ClientToServerEvents {
@@ -76,7 +77,13 @@ export interface ServerToClientEvents {
   DELETE_TACTON_CLI: (res: TactonDeletion) => void;
   CHANGE_TACTON_METADATA_CLI: (reset: ChangeTactonMetadata) => void;
   UPDATE_TACTON_CLI: (res: UpdateTacton) => void;
+  UPDATE_AVAILABLE_TAGS_CLI: (res: UpdateAvailableTags) => void
 }
+export interface UpdateAvailableTags {
+  roomId: string;
+  tags: string[];
+}
+
 export interface ChangeTactonMetadata {
   roomId: string;
   tactonId: string;
