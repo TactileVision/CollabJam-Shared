@@ -80,7 +80,7 @@ export interface ServerToClientEvents {
   UPDATE_AVAILABLE_TAGS_CLI: (res: UpdateAvailableTags) => void
 }
 export interface UpdateAvailableTags {
-  roomId: string;
+  // roomId: string;
   tags: string[];
 }
 
