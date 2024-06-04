@@ -82,6 +82,7 @@ export interface ServerToClientEvents {
 export interface UpdateAvailableTags {
   // roomId: string;
   customTags: string[];
+  bodyTags: string[] | undefined
 }
 
 export interface ChangeTactonMetadata {
