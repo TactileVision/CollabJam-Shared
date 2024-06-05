@@ -5,7 +5,9 @@ export interface TactonMetadata {
   iteration: number;
   favorite: boolean;
   recordDate: Date;
-  description: string;
+  notes: string;
+  intention: string;
+  prompt: string;
   customTags: string[];
   bodyTags: string[];
 }
