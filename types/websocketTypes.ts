@@ -47,6 +47,7 @@ export enum WS_MSG_TYPE {
   DUPLICATE_TACTON_CLI = "DUPLICATE_TACTON_CLI", // the same as GET_TACTON_CLI
   MOVE_TACTON_SERV = "MOVE_TACTON_SERV", // 
   UPDATE_AVAILABLE_TAGS_CLI = "UPDATE_AVAILABLE_TAGS_CLI",
+  SCREENSHOT_SERV= "SCREENSHOT_SERV"
 }
 
 export interface ClientToServerEvents {
@@ -60,7 +61,7 @@ export interface ClientToServerEvents {
   CHANGE_TACTON_METADATA_SERV: (req: ChangeTactonMetadata) => void;
   UPDATE_TACTON_SERV: (req: UpdateTacton) => void;
   MOVE_TACTON_SERV: (req: TactonMove) => void;
-
+  SCREENSHOT_SERV: (req: TactonBase64) => void;
 }
 
 export interface ServerToClientEvents {
@@ -105,6 +106,11 @@ export interface TactonMove {
 export interface TactonIdentifier {
   roomId: string,
   tactonId: string
+}
+
+export interface TactonBase64 {
+  tactonId: string,
+  base64: string
 }
 
 export interface UpdateTacton {
