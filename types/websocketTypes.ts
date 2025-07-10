@@ -45,10 +45,10 @@ export enum WS_MSG_TYPE {
   DELETE_TACTON_CLI = "DELETE_TACTON_CLI",
   DUPLICATE_TACTON_SERV = "DUPLICATE_TACTON_SERV",
   DUPLICATE_TACTON_CLI = "DUPLICATE_TACTON_CLI", // the same as GET_TACTON_CLI
-  MOVE_TACTON_SERV = "MOVE_TACTON_SERV", // 
+  MOVE_TACTON_SERV = "MOVE_TACTON_SERV", //
   UPDATE_AVAILABLE_TAGS_CLI = "UPDATE_AVAILABLE_TAGS_CLI",
   UPDATE_EDITING_USER_SERV = "UPDATE_EDITING_USER_SERV",
-  UPDATE_EDITING_USER_CLI = "UPDATE_EDITING_USER_CLI"
+  UPDATE_EDITING_USER_CLI = "UPDATE_EDITING_USER_CLI",
 }
 
 export interface ClientToServerEvents {
@@ -80,14 +80,14 @@ export interface ServerToClientEvents {
   DELETE_TACTON_CLI: (res: TactonDeletion) => void;
   CHANGE_TACTON_METADATA_CLI: (reset: ChangeTactonMetadata) => void;
   UPDATE_TACTON_CLI: (res: UpdateTacton) => void;
-  UPDATE_AVAILABLE_TAGS_CLI: (res: UpdateAvailableTags) => void
+  UPDATE_AVAILABLE_TAGS_CLI: (res: UpdateAvailableTags) => void;
   CHANGE_EDITING_USER_CLI: (req: UpdateEditingUser) => void;
 }
 export interface UpdateAvailableTags {
   // roomId: string;
   customTags: string[] | null;
   bodyTags: string[] | null;
-  promptTags: string[] | null
+  promptTags: string[] | null;
 }
 
 export interface ChangeTactonMetadata {
@@ -97,17 +97,17 @@ export interface ChangeTactonMetadata {
 }
 
 export interface TactonDeletion {
-  delted: boolean,
-  tacton: TactonIdentifier
+  delted: boolean;
+  tacton: TactonIdentifier;
 }
 
 export interface TactonMove {
-  tacton: TactonIdentifier,
-  newRoomId: string
+  tacton: TactonIdentifier;
+  newRoomId: string;
 }
 export interface TactonIdentifier {
-  roomId: string,
-  tactonId: string
+  roomId: string;
+  tactonId: string;
 }
 
 export interface UpdateTacton {
@@ -203,8 +203,8 @@ export interface MsgListOfAvailableRooms {
 }
 export interface MsgChangeTactonMetadata {
   type:
-  | WS_MSG_TYPE.CHANGE_TACTON_METADATA_CLI
-  | WS_MSG_TYPE.CHANGE_TACTON_METADATA_SERV;
+    | WS_MSG_TYPE.CHANGE_TACTON_METADATA_CLI
+    | WS_MSG_TYPE.CHANGE_TACTON_METADATA_SERV;
   payload: ChangeTactonMetadata;
 }
 
@@ -298,25 +298,25 @@ export interface MsgResponseReceivedRecordedTacton {
 export interface MsgRequestUpdateRoom {
   type: WS_MSG_TYPE.UPDATE_ROOM_SERV;
   payload:
-  | {
-    room: {
-      id: string;
-      name: string;
-      description: string;
-    };
-    user: {
-      id: string;
-      name: string;
-    };
-  }
-  | RequestUpdateRoom;
+    | {
+        room: {
+          id: string;
+          name: string;
+          description: string;
+        };
+        user: {
+          id: string;
+          name: string;
+        };
+      }
+    | RequestUpdateRoom;
 }
 
 export interface MsgRequestUpdateEditingUser {
-  type: WS_MSG_TYPE.UPDATE_EDITING_USER_SERV,
-  payload: UpdateEditingUser
+  type: WS_MSG_TYPE.UPDATE_EDITING_USER_SERV;
+  payload: UpdateEditingUser;
 }
 export interface MsgResponseUpdateEditingUser {
-  type: WS_MSG_TYPE.UPDATE_EDITING_USER_CLI,
-  payload: UpdateEditingUser
+  type: WS_MSG_TYPE.UPDATE_EDITING_USER_CLI;
+  payload: UpdateEditingUser;
 }
