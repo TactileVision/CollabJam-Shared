@@ -47,6 +47,8 @@ export enum WS_MSG_TYPE {
   DUPLICATE_TACTON_CLI = "DUPLICATE_TACTON_CLI", // the same as GET_TACTON_CLI
   MOVE_TACTON_SERV = "MOVE_TACTON_SERV", // 
   UPDATE_AVAILABLE_TAGS_CLI = "UPDATE_AVAILABLE_TAGS_CLI",
+  UPDATE_EDITING_USER_SERV = "UPDATE_EDITING_USER_SERV",
+  UPDATE_EDITING_USER_CLI = "UPDATE_EDITING_USER_CLI"
 }
 
 export interface ClientToServerEvents {
@@ -60,7 +62,7 @@ export interface ClientToServerEvents {
   CHANGE_TACTON_METADATA_SERV: (req: ChangeTactonMetadata) => void;
   UPDATE_TACTON_SERV: (req: UpdateTacton) => void;
   MOVE_TACTON_SERV: (req: TactonMove) => void;
-
+  CHANGE_EDITING_USER_SERV: (req: UpdateEditingUser) => void;
 }
 
 export interface ServerToClientEvents {
@@ -79,6 +81,7 @@ export interface ServerToClientEvents {
   CHANGE_TACTON_METADATA_CLI: (reset: ChangeTactonMetadata) => void;
   UPDATE_TACTON_CLI: (res: UpdateTacton) => void;
   UPDATE_AVAILABLE_TAGS_CLI: (res: UpdateAvailableTags) => void
+  CHANGE_EDITING_USER_CLI: (req: UpdateEditingUser) => void;
 }
 export interface UpdateAvailableTags {
   // roomId: string;
@@ -159,6 +162,11 @@ export interface RequestUpdateUser {
 export interface RequestSendTactileInstruction {
   roomId: string;
   instructions: InstructionToClient[];
+}
+
+export interface UpdateEditingUser {
+  roomId: string;
+  userId: string | null;
 }
 
 export type SocketMessage =
@@ -302,4 +310,13 @@ export interface MsgRequestUpdateRoom {
     };
   }
   | RequestUpdateRoom;
+}
+
+export interface MsgRequestUpdateEditingUser {
+  type: WS_MSG_TYPE.UPDATE_EDITING_USER_SERV,
+  payload: UpdateEditingUser
+}
+export interface MsgResponseUpdateEditingUser {
+  type: WS_MSG_TYPE.UPDATE_EDITING_USER_CLI,
+  payload: UpdateEditingUser
 }
