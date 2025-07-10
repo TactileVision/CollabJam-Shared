@@ -31,4 +31,5 @@ export interface Room extends RoomMetaData {
   mode: InteractionMode;
   maxDurationRecord: number;
   currentRecordingTime: number;
+  currentlyEditingUser: string | null;
 }

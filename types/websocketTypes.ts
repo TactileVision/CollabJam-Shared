@@ -62,7 +62,7 @@ export interface ClientToServerEvents {
   CHANGE_TACTON_METADATA_SERV: (req: ChangeTactonMetadata) => void;
   UPDATE_TACTON_SERV: (req: UpdateTacton) => void;
   MOVE_TACTON_SERV: (req: TactonMove) => void;
-  CHANGE_EDITING_USER_SERV: (req: UpdateEditingUser) => void;
+  UPDATE_EDITING_USER_SERV: (req: UpdateEditingUser) => void;
 }
 
 export interface ServerToClientEvents {
@@ -81,7 +81,7 @@ export interface ServerToClientEvents {
   CHANGE_TACTON_METADATA_CLI: (reset: ChangeTactonMetadata) => void;
   UPDATE_TACTON_CLI: (res: UpdateTacton) => void;
   UPDATE_AVAILABLE_TAGS_CLI: (res: UpdateAvailableTags) => void;
-  CHANGE_EDITING_USER_CLI: (req: UpdateEditingUser) => void;
+  UPDATE_EDITING_USER_CLI: (req: UpdateEditingUser) => void;
 }
 export interface UpdateAvailableTags {
   // roomId: string;
