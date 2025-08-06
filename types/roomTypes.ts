@@ -33,3 +33,8 @@ export interface Room extends RoomMetaData {
   currentRecordingTime: number;
   currentlyEditingUser: string | null;
 }
+
+
+export interface TactonEditorMap {
+  [key: string]: string | null //| [string]
+}

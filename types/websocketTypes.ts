@@ -1,4 +1,4 @@
-import { InteractionMode, Room, User } from "./roomTypes";
+import { InteractionMode, Room, TactonEditorMap, User } from "./roomTypes";
 import { InstructionToClient, Tacton, TactonMetadata } from "./tactonTypes";
 
 export enum WS_MSG_TYPE {
@@ -173,7 +173,8 @@ export interface UpdateEditingUser {
 }
 
 export interface SharedRuntimeData {
-  tactonEditorMap: Map<string, string | null>
+  tactonEditorMap: TactonEditorMap
+  foo: string
 }
 
 export type SocketMessage =
