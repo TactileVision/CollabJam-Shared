@@ -166,6 +166,7 @@ export interface RequestSendTactileInstruction {
 
 export interface UpdateEditingUser {
   roomId: string;
+  tactonId: string;
   userId: string | null;
 }
 
