@@ -49,6 +49,7 @@ export enum WS_MSG_TYPE {
   UPDATE_AVAILABLE_TAGS_CLI = "UPDATE_AVAILABLE_TAGS_CLI",
   UPDATE_EDITING_USER_SERV = "UPDATE_EDITING_USER_SERV",
   UPDATE_EDITING_USER_CLI = "UPDATE_EDITING_USER_CLI",
+  SHARE_RUNTIME_DATA_CLI = "SHARE_RUNTIME_DATA_CLI",
 }
 
 export interface ClientToServerEvents {
@@ -82,6 +83,7 @@ export interface ServerToClientEvents {
   UPDATE_TACTON_CLI: (res: UpdateTacton) => void;
   UPDATE_AVAILABLE_TAGS_CLI: (res: UpdateAvailableTags) => void;
   UPDATE_EDITING_USER_CLI: (res: UpdateEditingUser) => void;
+  SHARE_RUNTIME_DATA_CLI: (res: SharedRuntimeData) => void;
 }
 export interface UpdateAvailableTags {
   // roomId: string;
@@ -170,6 +172,10 @@ export interface UpdateEditingUser {
   userId: string | null;
 }
 
+export interface SharedRuntimeData {
+  tactonEditorMap: Map<string, string | null>
+}
+
 export type SocketMessage =
   | MsgRequestUpdateRoom
   | MsgResponseReceivedRecordedTacton
@@ -204,8 +210,8 @@ export interface MsgListOfAvailableRooms {
 }
 export interface MsgChangeTactonMetadata {
   type:
-    | WS_MSG_TYPE.CHANGE_TACTON_METADATA_CLI
-    | WS_MSG_TYPE.CHANGE_TACTON_METADATA_SERV;
+  | WS_MSG_TYPE.CHANGE_TACTON_METADATA_CLI
+  | WS_MSG_TYPE.CHANGE_TACTON_METADATA_SERV;
   payload: ChangeTactonMetadata;
 }
 
@@ -299,18 +305,18 @@ export interface MsgResponseReceivedRecordedTacton {
 export interface MsgRequestUpdateRoom {
   type: WS_MSG_TYPE.UPDATE_ROOM_SERV;
   payload:
-    | {
-        room: {
-          id: string;
-          name: string;
-          description: string;
-        };
-        user: {
-          id: string;
-          name: string;
-        };
-      }
-    | RequestUpdateRoom;
+  | {
+    room: {
+      id: string;
+      name: string;
+      description: string;
+    };
+    user: {
+      id: string;
+      name: string;
+    };
+  }
+  | RequestUpdateRoom;
 }
 
 export interface MsgRequestUpdateEditingUser {
@@ -320,4 +326,9 @@ export interface MsgRequestUpdateEditingUser {
 export interface MsgResponseUpdateEditingUser {
   type: WS_MSG_TYPE.UPDATE_EDITING_USER_CLI;
   payload: UpdateEditingUser;
+}
+
+export interface MsgShareRuntimeData {
+  type: WS_MSG_TYPE.SHARE_RUNTIME_DATA_CLI;
+  payload: SharedRuntimeData;
 }
