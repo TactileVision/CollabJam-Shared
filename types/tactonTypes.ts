@@ -42,7 +42,9 @@ export interface InstructionSetParameter {
 export const isInstructionWait = (instruction: TactonInstruction) => {
   return "wait" in instruction;
 };
-export const isInstructionSetParameter = (instruction: TactonInstruction): instruction is InstructionSetParameter => {
+export const isInstructionSetParameter = (
+  instruction: TactonInstruction,
+): instruction is InstructionSetParameter => {
   return "setParameter" in instruction;
 };
 export type TactonInstruction = InstructionSetParameter | InstructionWait;
@@ -108,7 +110,7 @@ export interface GraphBlock {
 
 export enum StretchType {
   HORIZONTAL,
-  VERTICAL
+  VERTICAL,
 }
 
 export enum StretchDirection {
