@@ -9,7 +9,7 @@ export interface TactonMetadata {
   intention: string;
   prompt: string;
   customTags: string[];
-  bodyTags: string[];
+  bodyTags: (string | undefined)[];
 }
 export interface Tacton {
   uuid: string;
@@ -21,7 +21,7 @@ export interface InstructionSetParameter {
     channels: number[];
     intensity: number;
     uuids: string[];
-    groupUuid: string | undefined;
+    groupUuids: (string | undefined)[];
   };
 }
 export function impl<I>(i: I) {
@@ -38,7 +38,7 @@ export interface InstructionSetParameter {
     channels: number[];
     intensity: number;
     uuids: string[];
-    groupUuid: string | undefined;
+    groupUuids: (string | undefined)[];
   };
 }
 export const isInstructionWait = (instruction: TactonInstruction) => {
