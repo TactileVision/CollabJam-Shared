@@ -119,3 +119,5 @@ export enum StretchDirection {
   NEGATIVE,
   POSITIVE,
 }
+
+export const DUMMY_GROUP_UUID: string = "__COPY__";
