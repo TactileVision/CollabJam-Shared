@@ -21,7 +21,7 @@ export interface InstructionSetParameter {
     channels: number[];
     intensity: number;
     uuids: string[];
-    groupUuids: (string | undefined)[];
+    groupUuids: (string | null)[];
   };
 }
 export function impl<I>(i: I) {
@@ -38,7 +38,7 @@ export interface InstructionSetParameter {
     channels: number[];
     intensity: number;
     uuids: string[];
-    groupUuids: (string | undefined)[];
+    groupUuids: (string | null)[];
   };
 }
 export const isInstructionWait = (instruction: TactonInstruction) => {
