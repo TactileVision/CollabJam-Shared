@@ -9,7 +9,7 @@ export interface TactonMetadata {
   intention: string;
   prompt: string;
   customTags: string[];
-  bodyTags: (string | undefined)[];
+  bodyTags: string[];
 }
 export interface Tacton {
   uuid: string;
