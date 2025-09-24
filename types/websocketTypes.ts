@@ -49,6 +49,8 @@ export enum WS_MSG_TYPE {
   UPDATE_AVAILABLE_TAGS_CLI = "UPDATE_AVAILABLE_TAGS_CLI",
   UPDATE_EDITING_USER_SERV = "UPDATE_EDITING_USER_SERV",
   UPDATE_EDITING_USER_CLI = "UPDATE_EDITING_USER_CLI",
+  UPDATE_EDITING_USER_UUIDS_SERV = "UPDATE_EDITING_USER_UUIDS_SERV",
+  UPDATE_EDITING_USER_UUIDS_CLI = "UPDATE_EDITING_USER_UUIDS_CLI"
 }
 
 export interface ClientToServerEvents {
@@ -63,6 +65,7 @@ export interface ClientToServerEvents {
   UPDATE_TACTON_SERV: (req: UpdateTacton) => void;
   MOVE_TACTON_SERV: (req: TactonMove) => void;
   UPDATE_EDITING_USER_SERV: (req: UpdateEditingUser) => void;
+  UPDATE_EDITING_USER_UUIDS_SERV: (req: UpdateEditingUserUUIDS) => void;
 }
 
 export interface ServerToClientEvents {
@@ -82,6 +85,7 @@ export interface ServerToClientEvents {
   UPDATE_TACTON_CLI: (res: UpdateTacton) => void;
   UPDATE_AVAILABLE_TAGS_CLI: (res: UpdateAvailableTags) => void;
   UPDATE_EDITING_USER_CLI: (res: UpdateEditingUser) => void;
+  UPDATE_EDITING_USER_UUIDS_CLI: (req: UpdateEditingUserUUIDS) => void;
 }
 export interface UpdateAvailableTags {
   // roomId: string;
@@ -167,6 +171,12 @@ export interface RequestSendTactileInstruction {
 export interface UpdateEditingUser {
   roomId: string;
   userId: string | null;
+}
+
+export interface UpdateEditingUserUUIDS {
+  roomId: string;
+  userId: string | null;
+  uuids: string[];
 }
 
 export type SocketMessage =
