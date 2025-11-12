@@ -50,7 +50,9 @@ export enum WS_MSG_TYPE {
   UPDATE_EDITING_USER_SERV = "UPDATE_EDITING_USER_SERV",
   UPDATE_EDITING_USER_CLI = "UPDATE_EDITING_USER_CLI",
   UPDATE_EDITING_USER_UUIDS_SERV = "UPDATE_EDITING_USER_UUIDS_SERV",
-  UPDATE_EDITING_USER_UUIDS_CLI = "UPDATE_EDITING_USER_UUIDS_CLI"
+  UPDATE_EDITING_USER_UUIDS_CLI = "UPDATE_EDITING_USER_UUIDS_CLI",
+  UNDO_ACTION_SERV = "UNDO_ACTION_SERV",
+  REDO_ACTION_SERV = "REDO_ACTION_SERV",
 }
 
 export interface ClientToServerEvents {
@@ -66,6 +68,8 @@ export interface ClientToServerEvents {
   MOVE_TACTON_SERV: (req: TactonMove) => void;
   UPDATE_EDITING_USER_SERV: (req: UpdateEditingUser) => void;
   UPDATE_EDITING_USER_UUIDS_SERV: (req: UpdateEditingUserUUIDS) => void;
+  UNDO_ACTION_SERV: (req: UndoAction) => void;
+  REDO_ACTION_SERV: (req: RedoAction) => void;
 }
 
 export interface ServerToClientEvents {
@@ -86,6 +90,8 @@ export interface ServerToClientEvents {
   UPDATE_AVAILABLE_TAGS_CLI: (res: UpdateAvailableTags) => void;
   UPDATE_EDITING_USER_CLI: (res: UpdateEditingUser) => void;
   UPDATE_EDITING_USER_UUIDS_CLI: (req: UpdateEditingUserUUIDS) => void;
+  UNDO_ACTION_CLI: (req: UndoAction) => void;
+  REDO_ACTION_CLI: (req: RedoAction) => void;
 }
 export interface UpdateAvailableTags {
   // roomId: string;
@@ -178,6 +184,16 @@ export interface UpdateEditingUserUUIDS {
   roomId: string;
   userId: string | null;
   uuids: string[];
+}
+
+export interface UndoAction {
+  roomId: string;
+  tactonId: string;
+}
+
+export interface RedoAction {
+  roomId: string;
+  tactonId: string;
 }
 
 export type SocketMessage =
@@ -331,3 +347,14 @@ export interface MsgResponseUpdateEditingUser {
   type: WS_MSG_TYPE.UPDATE_EDITING_USER_CLI;
   payload: UpdateEditingUser;
 }
+
+export interface MsgRequestUndoAction {
+  type: WS_MSG_TYPE.UNDO_ACTION_SERV;
+  payload: UndoAction
+}
+
+export interface MsgRequestRedoAction {
+  type: WS_MSG_TYPE.REDO_ACTION_SERV;
+  payload: RedoAction
+}
+
