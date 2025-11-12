@@ -136,6 +136,7 @@ export interface ResponseEnteredRoom {
   userId: string;
   participants: User[];
   recordings: Tacton[];
+  userLocks: Record<string, string[]>;
 }
 
 export interface RequestUpdateRoom {
