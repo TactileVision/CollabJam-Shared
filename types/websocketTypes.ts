@@ -47,8 +47,6 @@ export enum WS_MSG_TYPE {
   DUPLICATE_TACTON_CLI = "DUPLICATE_TACTON_CLI", // the same as GET_TACTON_CLI
   MOVE_TACTON_SERV = "MOVE_TACTON_SERV", //
   UPDATE_AVAILABLE_TAGS_CLI = "UPDATE_AVAILABLE_TAGS_CLI",
-  UPDATE_EDITING_USER_SERV = "UPDATE_EDITING_USER_SERV",
-  UPDATE_EDITING_USER_CLI = "UPDATE_EDITING_USER_CLI",
   UPDATE_EDITING_USER_UUIDS_SERV = "UPDATE_EDITING_USER_UUIDS_SERV",
   UPDATE_EDITING_USER_UUIDS_CLI = "UPDATE_EDITING_USER_UUIDS_CLI",
   UNDO_ACTION_SERV = "UNDO_ACTION_SERV",
@@ -66,7 +64,6 @@ export interface ClientToServerEvents {
   CHANGE_TACTON_METADATA_SERV: (req: ChangeTactonMetadata) => void;
   UPDATE_TACTON_SERV: (req: UpdateTacton) => void;
   MOVE_TACTON_SERV: (req: TactonMove) => void;
-  UPDATE_EDITING_USER_SERV: (req: UpdateEditingUser) => void;
   UPDATE_EDITING_USER_UUIDS_SERV: (req: UpdateEditingUserUUIDS) => void;
   UNDO_ACTION_SERV: (req: UndoAction) => void;
   REDO_ACTION_SERV: (req: RedoAction) => void;
@@ -88,7 +85,6 @@ export interface ServerToClientEvents {
   CHANGE_TACTON_METADATA_CLI: (reset: ChangeTactonMetadata) => void;
   UPDATE_TACTON_CLI: (res: UpdateTacton) => void;
   UPDATE_AVAILABLE_TAGS_CLI: (res: UpdateAvailableTags) => void;
-  UPDATE_EDITING_USER_CLI: (res: UpdateEditingUser) => void;
   UPDATE_EDITING_USER_UUIDS_CLI: (req: UpdateEditingUserUUIDS) => void;
   UNDO_ACTION_CLI: (req: UndoAction) => void;
   REDO_ACTION_CLI: (req: RedoAction) => void;
@@ -173,11 +169,6 @@ export interface RequestUpdateUser {
 export interface RequestSendTactileInstruction {
   roomId: string;
   instructions: InstructionToClient[];
-}
-
-export interface UpdateEditingUser {
-  roomId: string;
-  userId: string | null;
 }
 
 export interface UpdateEditingUserUUIDS {
@@ -337,15 +328,6 @@ export interface MsgRequestUpdateRoom {
         };
       }
     | RequestUpdateRoom;
-}
-
-export interface MsgRequestUpdateEditingUser {
-  type: WS_MSG_TYPE.UPDATE_EDITING_USER_SERV;
-  payload: UpdateEditingUser;
-}
-export interface MsgResponseUpdateEditingUser {
-  type: WS_MSG_TYPE.UPDATE_EDITING_USER_CLI;
-  payload: UpdateEditingUser;
 }
 
 export interface MsgRequestUndoAction {
